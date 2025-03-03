@@ -1,62 +1,34 @@
-# Calculate_invoice
-This program calculates invoices.
-import java.util.Scanner;
+# Invoice Calculation System
 
-//Kadir PEKDEMİR 150121069
-//This program calculates invoices.
+This project is a simple program written in Java that calculates the electricity invoices for a set of flats based on their consumption and a total bill amount. The program distributes the total bill among the flats according to a defined model.
 
-public class HW4_Q1_150121069 {
+### Features:
+- **Calculate Invoices**: The program calculates the invoice amount for each flat based on their individual electricity consumption.
+- **Bill Distribution**: The total bill is divided into two parts: 
+  - 30% is divided equally among all flats.
+  - 70% is divided based on each flat's electricity consumption relative to the total consumption.
 
-		
-	public static double [] calculateTheInvoice (double[] flats, double totalBill) {
-		    //Calculate 30 percent
-			double a = totalBill*0.3/flats.length;
-			//Calculate 70 percent
-	    	double b = totalBill*0.7;
-	    	
-	    	//Add up your electricity expenses
-	    	double c = 0;
-	    	for(int i = 0; i < flats.length; i++) {
-	    		c +=flats[i];
-	    	} 
-	    	
-	    	double d = b/c;
-	    	//Bill an apartment has to pay
-	    	double[] bills = new double[flats.length];
-	    	for(int j = 0; j < flats.length; j++) {
-	    		 bills[j] = a+(d*flats[j]);
-	    	}
-	    	return bills;
-	    	
-		}
-		public static void printBills (double[] bills) {
-			
-			
-			//Print the invoice
-			for(int i = 0; i < bills.length; i++) {
-				System.out.println("Flat #"+""+(i+1)+": "+ (int)(bills[i]*100)/100.0);
-			}
-			
-		}
-	    
+### How It Works:
+1. **Input:**
+   - The program takes the number of flats (`N`).
+   - Then, it takes the electricity consumption for each flat.
+   - Finally, it takes the total bill amount that needs to be distributed.
+   
+2. **Processing:**
+   - The program calculates 30% of the total bill to be shared equally among all flats.
+   - It calculates the remaining 70% based on each flat’s electricity consumption.
+   
+3. **Output:**
+   - For each flat, the program calculates and prints the amount they need to pay based on their electricity usage.
 
-		public static void main(String[] args) {
-			//Create Scanner
-			Scanner input = new Scanner(System.in);
-			int N = input.nextInt();
-			//Create array
-			double[] flats = new double[N];
-			
-			for (int i = 0; i < flats.length; i++) {
-				flats[i] = input.nextDouble();
-			}
-			double totalBill = input.nextDouble();
-			
-			
-	    	//Call methods
-	    	 double[] bills = calculateTheInvoice ( flats, totalBill);
-	    	printBills(bills);
-		}
+### Example:
+For example, if there are 3 flats with consumption values `100`, `200`, and `300`, and the total bill is `600`, the program will output how much each flat needs to pay, based on the formula explained above.
 
+### Technologies Used:
+- **Java**: Programming language used for development
+- **Scanner**: For user input
 
-}
+### How to Run:
+1. Compile the program:
+   ```bash
+   javac HW4_Q1_150121069.java
